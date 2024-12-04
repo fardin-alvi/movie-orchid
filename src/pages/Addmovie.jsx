@@ -2,12 +2,15 @@ import Navbar from '../component/Navbar';
 import { useState } from "react";
 import { Rating } from "react-simple-star-rating";
 import Footer from '../component/Footer';
+import Swal from 'sweetalert2'
 
 const Addmovie = () => {
     const [movie, setMovie] = useState({});
     const [errors, setErrors] = useState({});
     const genres = ["Comedy", "Drama", "Horror", "Action", "Romance"];
     const years = [2024, 2023, 2022, 2021, 2020];
+
+    console.log(movie);
 
     const handleInputChange = (e) => {
         setMovie({ ...movie, [e.target.name]: e.target.value });
@@ -49,8 +52,28 @@ const Addmovie = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            console.log("Movie Data:", movie);
-            alert("Movie added successfully!");
+            
+            fetch('http://localhost:4000/movies', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(movie)
+
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.insertedId > 0) {
+                        Swal.fire({
+                            title: 'Success!',
+                            text: 'Movie Added Successfully',
+                            icon: 'success',
+                            confirmButtonText: 'Cool',
+                        })
+                        form.reset();
+                    }
+                })
+            
         }
     };
 

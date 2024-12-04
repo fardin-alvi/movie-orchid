@@ -11,6 +11,7 @@ import Addmovie from './pages/Addmovie.jsx';
 import Login from './pages/Login.jsx';
 import Register from './pages/Register.jsx';
 import Authprovider from './Provider/Authprovider.jsx';
+import Privateroute from './PrivateRoute/Privateroute.jsx'
 
 const router = createBrowserRouter([
   {
@@ -19,7 +20,9 @@ const router = createBrowserRouter([
   },
   {
     path: 'addmovie',
-    element:<Addmovie/>
+    element: <Privateroute>
+      <Addmovie />
+    </Privateroute>
   },
   {
     path: 'login',
