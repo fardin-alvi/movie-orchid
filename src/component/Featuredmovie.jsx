@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Featuredmovie = ({ movie }) => {
-    const { poster, title, genre, duration, releaseYear, rating } = movie
+    const { _id, poster, title, genre, duration, releaseYear, rating } = movie
     return (
         <div className="card card-side bg-base-50 shadow-md space-x-6">
             <figure>
@@ -18,7 +18,7 @@ const Featuredmovie = ({ movie }) => {
                     <p className='text-sm'>Rating: {rating}</p>
                 </div>
                 <div className='text-left mt-5'>
-                    <Link className=' rounded-lg  py-2 px-3 bg-teal-400'>See Details</Link>
+                    <Link to={`/movies/${_id}`} className=' rounded-lg  py-2 px-3 bg-teal-400'>See Details</Link>
                 </div>
             </div>
         </div>

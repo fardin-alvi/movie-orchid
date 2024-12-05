@@ -72,9 +72,9 @@ const Navbar = () => {
                                 {user?.displayName}
                             </p>
                             <Link to='/login' onClick={handlelogout} className="btn -ml-6">Log Out</Link>
-                        </div> : <div className='className="flex flex-col items-center ' >
-                            <Link to='/login' className='border rounded-lg text-lg border-gray-300 md:mr-2 p-2' >LogIn</Link>
-                            <Link to='/register' className='border rounded-lg text-lg border-gray-300 p-2' >Register</Link>
+                        </div> : <div className='flex items-center ' >
+                            <Link to='/login' className='hidden md:flex border rounded-lg text-lg border-gray-300 md:mr-2 p-2' >LogIn</Link>
+                            <Link to='/register' className='hidden md:flex border rounded-lg text-lg border-gray-300 p-2' >Register</Link>
                         </div>
                 }
             </div>

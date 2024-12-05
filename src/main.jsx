@@ -13,6 +13,7 @@ import Register from './pages/Register.jsx';
 import Authprovider from './Provider/Authprovider.jsx';
 import Privateroute from './PrivateRoute/Privateroute.jsx'
 import Allmovie from './pages/Allmovie.jsx';
+import Moviedetails from './component/Moviedetails.jsx';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,14 @@ const router = createBrowserRouter([
   },
   {
     path: 'allmovie',
-    element: <Allmovie />
+    element: <Allmovie />,
+    loader: () => fetch('http://localhost:4000/movies')
+  },
+  {
+    path: '/movies/:id',
+    element: <Moviedetails />,
+    loader: ({ params }) => fetch(`http://localhost:4000/movies/${params.id}`)
+
   },
   {
     path: 'login',

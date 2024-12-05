@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from '../component/Navbar';
 import Banner from '../component/Banner';
 import Footer from '../component/Footer';
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import Featuredmovie from '../component/Featuredmovie';
 
 const Home = () => {
@@ -20,6 +20,7 @@ const Home = () => {
 
                     }
                 </div>
+                <Link to='/allmovie' className='btn bg-teal-400 my-5' >See All Movies</Link>
             </section>
             <footer>
                 <Footer />
