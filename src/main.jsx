@@ -14,11 +14,14 @@ import Authprovider from './Provider/Authprovider.jsx';
 import Privateroute from './PrivateRoute/Privateroute.jsx'
 import Allmovie from './pages/Allmovie.jsx';
 import Moviedetails from './component/Moviedetails.jsx';
+import Myfavorites from './pages/Myfavorites.jsx';
+import Errorpage from './component/Errorpage.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
+    errorElement:<Errorpage/>,
     loader: () => fetch('http://localhost:4000/movies')
   },
   {
@@ -34,9 +37,17 @@ const router = createBrowserRouter([
   },
   {
     path: '/movies/:id',
-    element: <Moviedetails />,
+    element: <Privateroute>
+      <Moviedetails />
+    </Privateroute>,
     loader: ({ params }) => fetch(`http://localhost:4000/movies/${params.id}`)
-
+  },
+  {
+    path: '/myfav',
+    element: <Privateroute>
+      <Myfavorites/>
+    </Privateroute>,
+    loader: () => fetch('http://localhost:4000/favoritemovie')
   },
   {
     path: 'login',
