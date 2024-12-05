@@ -1,10 +1,12 @@
 import Navbar from '../component/Navbar';
-import { useState } from "react";
-import { Rating } from "react-simple-star-rating";
+import { useContext, useState } from "react";
 import Footer from '../component/Footer';
 import Swal from 'sweetalert2'
+import { FaStar } from 'react-icons/fa';
+import { Authcontext } from '../Provider/Authprovider';
 
 const Addmovie = () => {
+    const { user } = useContext(Authcontext) 
     const [movie, setMovie] = useState({});
     const [errors, setErrors] = useState({});
     const genres = ["Comedy", "Drama", "Horror", "Action", "Romance"];
@@ -16,8 +18,8 @@ const Addmovie = () => {
         setMovie({ ...movie, [e.target.name]: e.target.value });
     };
 
-    const handleRatingChange = (rate) => {
-        setMovie({ ...movie, rating: rate });
+    const handleRatingChange = (rating) => {
+        setMovie({ ...movie, rating });
     };
 
     const validateForm = () => {
@@ -38,7 +40,7 @@ const Addmovie = () => {
         if (!movie.releaseYear) {
             newErrors.releaseYear = "Please select a release year.";
         }
-        if (movie.rating === 0) {
+        if (!movie.rating || movie.rating === 0) {
             newErrors.rating = "Please select a rating.";
         }
         if (!movie.summary || movie.summary.length < 10) {
@@ -46,23 +48,25 @@ const Addmovie = () => {
         }
 
         setErrors(newErrors);
-        // return Object.keys(newErrors).length === 0;
+        return Object.keys(newErrors).length === 0;
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
-            
+            const usermovie = { ...movie, email: user.email };
+
             fetch('http://localhost:4000/movies', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(movie)
+                body: JSON.stringify(usermovie)
 
             })
                 .then(res => res.json())
                 .then(data => {
+                    console.log(data);
                     if (data.insertedId > 0) {
                         Swal.fire({
                             title: 'Success!',
@@ -70,10 +74,10 @@ const Addmovie = () => {
                             icon: 'success',
                             confirmButtonText: 'Cool',
                         })
-                        form.reset();
                     }
+                    e.target.reset();
                 })
-            
+
         }
     };
 
@@ -81,7 +85,7 @@ const Addmovie = () => {
     return (
         <div>
             <nav>
-                <Navbar/>
+                <Navbar />
             </nav>
             <section>
                 <div className="flex justify-center items-center min-h-screen my-10">
@@ -109,9 +113,9 @@ const Addmovie = () => {
                                 <select name="genre" className="select select-bordered w-full rounded-md px-4 py-2 border-gray-300 shadow-sm" value={movie.genre} onChange={handleInputChange}
                                 >
                                     <option value="">Select genre</option>
-                                    {genres.map((g) => (
-                                        <option key={g} value={g}>
-                                            {g}
+                                    {genres.map((gen) => (
+                                        <option key={gen} value={gen}>
+                                            {gen}
                                         </option>
                                     ))}
                                 </select>
@@ -145,16 +149,17 @@ const Addmovie = () => {
                                 <p className="text-red-500 text-sm mt-1">{errors.duration}</p>
                             )}
 
-                            {/* Rating */}
                             <div className="flex items-center gap-x-4">
                                 <label className="w-32 text-sm font-bold text-gray-700">Rating</label>
-                                <div className='flex'>
-                                    <Rating onClick={handleRatingChange}></Rating>
+                                <div className="flex">
+                                    {[1, 2, 3, 4, 5].map((star) => (
+                                        <FaStar key={star} size={24} className={`cursor-pointer ${movie.rating >= star ? 'text-yellow-500' : 'text-gray-400'
+                                            }`} onClick={() => handleRatingChange(star)}
+                                        />
+                                    ))}
                                 </div>
                             </div>
-                            {errors.rating && (
-                                <p className="text-red-500 text-sm mt-1">{errors.rating}</p>
-                            )}
+                            {errors.rating && <p className="text-red-500 text-sm mt-1">{errors.rating}</p>}
 
                             <div className="flex items-start gap-x-4">
                                 <label className="w-32 text-sm font-bold text-gray-700">Summary</label>
@@ -176,7 +181,7 @@ const Addmovie = () => {
                 </div>
             </section>
             <footer>
-                <Footer/>
+                <Footer />
             </footer>
         </div>
     );
