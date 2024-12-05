@@ -7,7 +7,7 @@ const Navbar = () => {
     const { user, logout } = useContext(Authcontext)
     console.log(user);
     const links = <>
-        <NavLink to='/' className='border rounded-lg text-lg border-gray-300  p-2'>Home</NavLink>
+        <NavLink to='/' className='border rounded-lg text-lg border-gray-300 p-2'>Home</NavLink>
         <NavLink to='/allmovie' className='border rounded-lg text-lg border-gray-300  p-2'>All Movie</NavLink>
         <NavLink to='/tvshow' className='border rounded-lg text-lg border-gray-300  p-2'>Tv Shows</NavLink>
         <NavLink to='/login' className='md:hidden border rounded-lg text-lg border-gray-300  p-2'>LogIn</NavLink>

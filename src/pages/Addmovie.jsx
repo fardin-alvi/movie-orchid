@@ -1,7 +1,7 @@
 import Navbar from '../component/Navbar';
 import { useContext, useState } from "react";
 import Footer from '../component/Footer';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { FaStar } from 'react-icons/fa';
 import { Authcontext } from '../Provider/Authprovider';
 
@@ -67,7 +67,7 @@ const Addmovie = () => {
                 .then(res => res.json())
                 .then(data => {
                     console.log(data);
-                    if (data.insertedId > 0) {
+                    if (data.insertedId) {
                         Swal.fire({
                             title: 'Success!',
                             text: 'Movie Added Successfully',
@@ -75,13 +75,12 @@ const Addmovie = () => {
                             confirmButtonText: 'Cool',
                         })
                     }
-                    e.target.reset();
+                    
                 })
 
         }
     };
-
-
+    
     return (
         <div>
             <nav>

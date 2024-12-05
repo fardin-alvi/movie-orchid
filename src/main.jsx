@@ -17,7 +17,8 @@ import Allmovie from './pages/Allmovie.jsx';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Home/>
+    element: <Home />,
+    loader: () => fetch('http://localhost:4000/movies')
   },
   {
     path: 'addmovie',
