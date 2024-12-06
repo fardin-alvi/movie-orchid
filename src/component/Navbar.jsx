@@ -5,7 +5,6 @@ import { FaUserCircle } from 'react-icons/fa';
 
 const Navbar = () => {
     const { user, logout } = useContext(Authcontext)
-    console.log(user);
     const links = <>
         <NavLink to='/' className='border rounded-lg text-lg border-gray-300 p-2'>Home</NavLink>
         <NavLink to='/allmovie' className='border rounded-lg text-lg border-gray-300  p-2'>All Movie</NavLink>

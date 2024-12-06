@@ -1,18 +1,21 @@
+import React, { useEffect } from 'react';
 import Navbar from '../component/Navbar';
 import { useContext, useState } from "react";
 import Footer from '../component/Footer';
 import Swal from 'sweetalert2';
 import { FaStar } from 'react-icons/fa';
 import { Authcontext } from '../Provider/Authprovider';
+import { useLoaderData } from 'react-router-dom';
 
-const Addmovie = () => {
+const Updatemovie = () => {
     const { user } = useContext(Authcontext)
+    const loadedmovie = useLoaderData()
+    const { _id} = loadedmovie
     const [movie, setMovie] = useState({});
     const [errors, setErrors] = useState({});
     const genres = ["Comedy", "Drama", "Horror", "Action", "Romance"];
     const years = [2024, 2023, 2022, 2021, 2020];
 
-    console.log(movie);
 
     const handleInputChange = (e) => {
         setMovie({ ...movie, [e.target.name]: e.target.value });
@@ -56,8 +59,8 @@ const Addmovie = () => {
         if (validateForm()) {
             const usermovie = { ...movie, email: user.email };
 
-            fetch('http://localhost:4000/movies', {
-                method: 'POST',
+            fetch(`http://localhost:4000/movies/${_id}`, {
+                method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -66,16 +69,14 @@ const Addmovie = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
-                    if (data.insertedId) {
+                    if (data.modifiedCount > 0) {
                         Swal.fire({
                             title: 'Success!',
-                            text: 'Movie Added Successfully',
+                            text: 'Movie updated Successfully',
                             icon: 'success',
-                            confirmButtonText: 'Cool',
+                            confirmButtonText: 'Cool'
                         })
                     }
-
                 })
 
         }
@@ -87,7 +88,7 @@ const Addmovie = () => {
             <section>
                 <div className="flex justify-center items-center min-h-screen my-10">
                     <div className="card bg-white shadow-xl p-6 w-full max-w-2xl rounded-lg">
-                        <h2 className="text-2xl font-bold mb-6 text-center">Add Movie</h2>
+                        <h2 className="text-2xl font-bold mb-6 text-center">Update Movie</h2>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="flex items-center gap-x-4">
                                 <label className="w-32 text-sm font-bold text-gray-700">Movie Poster</label>
@@ -184,4 +185,4 @@ const Addmovie = () => {
     );
 };
 
-export default Addmovie;
+export default Updatemovie;

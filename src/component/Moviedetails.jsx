@@ -3,6 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { Link, useLoaderData, useNavigate } from 'react-router-dom';
 import { AiFillDelete, AiOutlineHeart } from 'react-icons/ai';
+import { FaEdit } from "react-icons/fa";
 import Swal from 'sweetalert2';
 import { Authcontext } from '../Provider/Authprovider';
 
@@ -72,6 +73,10 @@ const Moviedetails = () => {
             })
     }
 
+    const handleupdate = () => {
+        
+    }
+
 
     return (
         <div>
@@ -91,11 +96,13 @@ const Moviedetails = () => {
                             <p className='text-sm'>Rating: {rating}</p>
                         </div>
                         <p className='text-gray-500'>{summary} </p>
-                        <div className="mt-4 flex space-x-2">
-                            <button onClick={() => handledelete(_id)}  className="flex items-center px-3 md:py-2 bg-red-500 text-white rounded-md"
+                        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-x-2">
+                            <button onClick={() => handledelete(_id)}  className="flex flex-col items-center px-2 md:py-2 text-sm bg-red-500 text-white rounded-md"
                             > <AiFillDelete className="mr-2" />Delete Movie</button>
-                            <button onClick={handlefavorite} className="flex items-center px-3 md:py-2 bg-teal-400 text-white rounded-md"
+                            <button onClick={handlefavorite} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
                             > <AiOutlineHeart className="mr-2" />Add to Favorite</button>
+                            <Link to={`/updatemovie/${_id}`} onClick={handleupdate} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
+                            > <FaEdit className="mr-2" />Update Movie</Link>
                         </div>
                     </div>
                 </div>

@@ -16,12 +16,13 @@ import Allmovie from './pages/Allmovie.jsx';
 import Moviedetails from './component/Moviedetails.jsx';
 import Myfavorites from './pages/Myfavorites.jsx';
 import Errorpage from './component/Errorpage.jsx';
+import Updatemovie from './component/Updatemovie.jsx';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    errorElement:<Errorpage/>,
+    errorElement: <Errorpage />,
     loader: () => fetch('http://localhost:4000/movies')
   },
   {
@@ -43,19 +44,26 @@ const router = createBrowserRouter([
     loader: ({ params }) => fetch(`http://localhost:4000/movies/${params.id}`)
   },
   {
+    path: '/updatemovie/:id',
+    element: <Privateroute>
+      <Updatemovie />
+    </Privateroute>,
+    loader: ({ params }) => fetch(`http://localhost:4000/movies/${params.id}`)
+  },
+  {
     path: '/myfav',
     element: <Privateroute>
-      <Myfavorites/>
+      <Myfavorites />
     </Privateroute>,
     loader: () => fetch('http://localhost:4000/favoritemovie')
   },
   {
     path: 'login',
-    element:<Login/>
+    element: <Login />
   },
   {
     path: 'register',
-    element:<Register/>
+    element: <Register />
   }
 ]);
 
