@@ -3,9 +3,9 @@ import Swal from 'sweetalert2';
 
 const Favoritemovie = ({ fav }) => {
     const [favoritemovies, setfavoritemovies] = useState(fav)
-    const { _id, poster, title, genre, duration, releaseYear, rating } = fav
+    const {_id, poster, title, genre, duration, releaseYear, rating } = favoritemovies
 
-    const handledelete = (_id) => {
+    const handledelete = (_id,) => {
         Swal.fire({
             title: "Are you sure?",
             text: "You won't be able to revert this!",
@@ -21,15 +21,15 @@ const Favoritemovie = ({ fav }) => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        if (data.deletedCount) {
+                        if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
                                 text: "This movie has been deleted.",
                                 icon: "success"
                             });
-                            navigate('/allmovie')
-                            const remaining = favoritemovies.filter(favmovie => favmovie._id != _id)
+                            const remaining = favoritemovies.filter((favmovie) => favmovie._d !== _id)
                             setfavoritemovies(remaining)
+                            navigate('/allmovie')
 
                         }
                     })
