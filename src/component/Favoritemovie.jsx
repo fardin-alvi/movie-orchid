@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
 const Favoritemovie = ({ fav }) => {
+    const navigate = useNavigate()
     const [favoritemovies, setfavoritemovies] = useState(fav)
-    const {_id, poster, title, genre, duration, releaseYear, rating } = favoritemovies
+    const { _id, poster, title, genre, duration, releaseYear, rating } = favoritemovies
 
     const handledelete = (_id,) => {
         Swal.fire({
@@ -24,12 +26,12 @@ const Favoritemovie = ({ fav }) => {
                         if (data.deletedCount > 0) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "This movie has been deleted.",
+                                text: "Your file has been deleted.",
                                 icon: "success"
                             });
-                            const remaining = favoritemovies.filter((favmovie) => favmovie._d !== _id)
-                            setfavoritemovies(remaining)
                             navigate('/allmovie')
+                            const remaining = favoritemovies.filter(favorite => favorite._id != _id)
+                            setfavoritemovies(remaining)
 
                         }
                     })

@@ -72,12 +72,6 @@ const Moviedetails = () => {
 
             })
     }
-
-    const handleupdate = () => {
-        
-    }
-
-
     return (
         <div>
             <Navbar />
@@ -101,7 +95,7 @@ const Moviedetails = () => {
                             > <AiFillDelete className="mr-2" />Delete Movie</button>
                             <button onClick={handlefavorite} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
                             > <AiOutlineHeart className="mr-2" />Add to Favorite</button>
-                            <Link to={`/updatemovie/${_id}`} onClick={handleupdate} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
+                            <Link to={`/updatemovie/${_id}`} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
                             > <FaEdit className="mr-2" />Update Movie</Link>
                         </div>
                     </div>
