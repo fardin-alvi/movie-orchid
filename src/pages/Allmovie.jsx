@@ -7,8 +7,11 @@ import { FaSearch } from 'react-icons/fa';
 
 const Allmovie = () => {
     const loadedmovie = useLoaderData()
+    const filterloaded = loadedmovie.filter(movie => {
+        return movie.genre !== 'Tv Show'
+    })
     const [searchmovie, setSearchmovie] = useState(""); 
-    const filtermovies = loadedmovie.filter(movie =>
+    const filtermovies = filterloaded.filter(movie =>
         movie.title.toLowerCase().includes(searchmovie.toLowerCase())
     );
     return (

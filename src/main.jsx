@@ -17,6 +17,7 @@ import Moviedetails from './component/Moviedetails.jsx';
 import Myfavorites from './pages/Myfavorites.jsx';
 import Errorpage from './component/Errorpage.jsx';
 import Updatemovie from './component/Updatemovie.jsx';
+import Tvshows from './pages/Tvshows.jsx';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,12 @@ const router = createBrowserRouter([
     path: 'allmovie',
     element: <Allmovie />,
     loader: () => fetch('http://localhost:4000/movies')
+  },
+  {
+    path: 'tvshow',
+    element: <Tvshows />,
+    loader: () => fetch('http://localhost:4000/movies')
+
   },
   {
     path: '/movies/:id',

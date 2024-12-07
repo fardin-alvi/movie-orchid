@@ -4,10 +4,23 @@ import Banner from '../component/Banner';
 import Footer from '../component/Footer';
 import { Link, useLoaderData } from 'react-router-dom';
 import Featuredmovie from '../component/Featuredmovie';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css'; // General Swiper styles
+import 'swiper/css/navigation'; // For navigation arrows
+import 'swiper/css/pagination'; // For pagination dots
+
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const Home = () => {
     const movies = useLoaderData()
-    const sortmovie = movies.sort((a, b) => b.rating - a.rating).slice(0, 6);
+    const filtermovie = movies.filter(movie => {
+        return movie.genre !== 'Tv Show'
+    })
+    const sortmovie = filtermovie.sort((a, b) => b.rating - a.rating).slice(0, 6);
+    const filtermovies = movies.filter(movie => {
+        const releaseYear = parseInt(movie.releaseYear);
+        return releaseYear >= 2023 && releaseYear <= 2024 && movie.genre !== 'Drama';
+    });
 
 
     return (
@@ -24,9 +37,40 @@ const Home = () => {
                 </div>
                 <Link to='/allmovie' className='btn bg-teal-400 my-5' >See All Movies</Link>
             </section>
-            <section>
-                <p className='text-xl font-semibold text-left w-10/12 '>Trending</p>
-                
+            <section className="w-full px-2 sm:w-11/12 sm:mx-auto my-10">
+                <div className='flex justify-between items-center'>
+                    <p className="text-lg sm:text-xl font-semibold text-left mb-4">Trending Movies</p>
+                    <Link to='allmovie' className="font-medium mb-4">See All</Link>
+                </div>
+                <Swiper
+                    modules={[Navigation, Pagination, Autoplay]}
+                    spaceBetween={10}
+                    slidesPerView={1}
+                    navigation
+                    autoplay={{ delay: 3000 }}
+                    pagination={{ clickable: true }}
+                    breakpoints={{
+                        640: { slidesPerView: 1 },
+                        768: { slidesPerView: 2 },
+                        1024: { slidesPerView: 3 }
+                    }}
+                >
+                    {filtermovies.map(movie => (
+                        <SwiperSlide key={movie._id}>
+                            <div className="flex flex-col items-center p-4 border border-gray-300 rounded-lg shadow-md bg-white dark:bg-gray-800 w-full">
+                                <img
+                                    src={movie.poster}
+                                    alt={movie.title}
+                                    className="w-full h-64 object-cover rounded-md"
+                                />
+                                <div className="mt-4 text-center">
+                                    <p className="font-bold text-base sm:text-lg text-gray-800 dark:text-white">{movie.title}</p>
+                                    <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">{movie.genre}</p>
+                                </div>
+                            </div>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
             </section>
             <footer>
                 <Footer />

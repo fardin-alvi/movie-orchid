@@ -9,7 +9,7 @@ const Addmovie = () => {
     const { user } = useContext(Authcontext)
     const [movie, setMovie] = useState({});
     const [errors, setErrors] = useState({});
-    const genres = ["Comedy", "Drama", "Horror", "Action", "Romance"];
+    const genres = ["Comedy", "Drama", "Horror", "Action", "Romance","Tv Show"];
     const years = [2024, 2023, 2022, 2021, 2020];
 
     console.log(movie);

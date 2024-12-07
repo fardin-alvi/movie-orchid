@@ -92,11 +92,11 @@ const Moviedetails = () => {
                         <p className='text-gray-500'>{summary} </p>
                         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-x-2">
                             <button onClick={() => handledelete(_id)}  className="flex flex-col items-center px-2 md:py-2 text-sm bg-red-500 text-white rounded-md"
-                            > <AiFillDelete className="mr-2" />Delete Movie</button>
+                            > <AiFillDelete className="mr-2" />Delete</button>
                             <button onClick={handlefavorite} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
                             > <AiOutlineHeart className="mr-2" />Add to Favorite</button>
                             <Link to={`/updatemovie/${_id}`} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
-                            > <FaEdit className="mr-2" />Update Movie</Link>
+                            > <FaEdit className="mr-2" />Update</Link>
                         </div>
                     </div>
                 </div>
