@@ -9,10 +9,8 @@ const Addmovie = () => {
     const { user } = useContext(Authcontext)
     const [movie, setMovie] = useState({});
     const [errors, setErrors] = useState({});
-    const genres = ["Comedy", "Drama", "Horror", "Action", "Romance","Tv Show"];
+    const genres = ["Comedy", "Drama", "Horror", "Action", "Romance", "Tv Show"];
     const years = [2024, 2023, 2022, 2021, 2020];
-
-    console.log(movie);
 
     const handleInputChange = (e) => {
         setMovie({ ...movie, [e.target.name]: e.target.value });
@@ -56,7 +54,7 @@ const Addmovie = () => {
         if (validateForm()) {
             const usermovie = { ...movie, email: user.email };
 
-            fetch('http://localhost:4000/movies', {
+            fetch('https://server-theta-rust.vercel.app/movies', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -66,7 +64,7 @@ const Addmovie = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    console.log(data);
+
                     if (data.insertedId) {
                         Swal.fire({
                             title: 'Success!',

@@ -18,7 +18,7 @@ const Favoritemovie = ({ fav }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/favoritemovie/${_id}`, {
+                fetch(`https://server-theta-rust.vercel.app/favoritemovie/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -55,7 +55,7 @@ const Favoritemovie = ({ fav }) => {
                     <p className='text-sm'>Releasing(Year): {releaseYear}</p>
                     <p className='text-sm'>Rating: {rating}</p>
                 </div>
-                <div className='mt-5'> 
+                <div className='mt-5'>
                     <button onClick={() => handledelete(_id)} className="flex items-center text-sm px-3 md:py-1 bg-red-500 text-white rounded-md"
                     >Delete Favorite</button>
                 </div>

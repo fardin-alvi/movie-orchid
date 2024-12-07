@@ -11,7 +11,7 @@ const Moviedetails = () => {
     const loadedmovie = useLoaderData()
     const [movies, setmovies] = useState(loadedmovie)
     const navigate = useNavigate()
-    const { user } = useContext(Authcontext) 
+    const { user } = useContext(Authcontext)
     const { _id, poster, title, genre, duration, releaseYear, rating, summary } = loadedmovie
 
     const handledelete = (_id) => {
@@ -25,7 +25,7 @@ const Moviedetails = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/movies/${_id}`, {
+                fetch(`https://server-theta-rust.vercel.app/movies/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -49,7 +49,7 @@ const Moviedetails = () => {
 
     const handlefavorite = () => {
         const favoritemovie = { ...movies, email: user.email }
-        fetch('http://localhost:4000/favoritemovie', {
+        fetch('https://server-theta-rust.vercel.app/favoritemovie', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,7 +59,6 @@ const Moviedetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.insertedId) {
                     Swal.fire({
                         title: 'Success!',
@@ -91,7 +90,7 @@ const Moviedetails = () => {
                         </div>
                         <p className='text-gray-500'>{summary} </p>
                         <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-x-2">
-                            <button onClick={() => handledelete(_id)}  className="flex flex-col items-center px-2 md:py-2 text-sm bg-red-500 text-white rounded-md"
+                            <button onClick={() => handledelete(_id)} className="flex flex-col items-center px-2 md:py-2 text-sm bg-red-500 text-white rounded-md"
                             > <AiFillDelete className="mr-2" />Delete</button>
                             <button onClick={handlefavorite} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
                             > <AiOutlineHeart className="mr-2" />Add to Favorite</button>
@@ -102,9 +101,9 @@ const Moviedetails = () => {
                 </div>
             </section>
             <footer>
-                <Footer/>
+                <Footer />
             </footer>
-            
+
         </div>
     );
 };

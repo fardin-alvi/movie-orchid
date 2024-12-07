@@ -10,7 +10,7 @@ import { useLoaderData } from 'react-router-dom';
 const Updatemovie = () => {
     const { user } = useContext(Authcontext)
     const loadedmovie = useLoaderData()
-    const { _id} = loadedmovie
+    const { _id } = loadedmovie
     const [movie, setMovie] = useState({});
     const [errors, setErrors] = useState({});
     const genres = ["Comedy", "Drama", "Horror", "Action", "Romance"];
@@ -59,7 +59,7 @@ const Updatemovie = () => {
         if (validateForm()) {
             const usermovie = { ...movie, email: user.email };
 
-            fetch(`http://localhost:4000/movies/${_id}`, {
+            fetch(`https://server-theta-rust.vercel.app/movies/${_id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
