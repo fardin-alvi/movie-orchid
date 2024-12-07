@@ -21,10 +21,13 @@ const Home = () => {
         const releaseYear = parseInt(movie.releaseYear);
         return releaseYear >= 2023 && releaseYear <= 2024 && movie.genre !== 'Drama';
     });
+    const dramaMovies = movies.filter(movie => movie.genre === 'Drama').slice(0, 3);
+    const actionMovies = movies.filter(movie => movie.genre === 'Action').slice(0, 3);
+    const comedyMovies = movies.filter(movie => movie.genre === 'Comedy').slice(0, 3);
 
 
     return (
-        <div className='dark:bg-black'>
+        <div className='dark:bg-black dark:text-white'>
             <Navbar />
             <Banner />
             <section className='w-11/12 mx-auto'>
@@ -71,6 +74,74 @@ const Home = () => {
                         </SwiperSlide>
                     ))}
                 </Swiper>
+            </section>
+            <section className="w-full px-2 sm:w-11/12 sm:mx-auto my-10">
+                <div className="flex justify-between items-center mb-4">
+                    <p className="text-lg sm:text-xl font-semibold text-left">Top Category</p>
+                    <Link to="/allmovie" className="font-medium">See All</Link>
+                </div>
+                <div className='grid grid-cols-1 md:grid-cols-3 gap-x-2 w-full '>
+                    <div className="flex flex-col">
+                        <p className="font-medium text-sm text-center mb-1">Drama</p>
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            direction="vertical"
+                            spaceBetween={10}
+                            slidesPerView={1}
+                            autoplay={{ delay: 3000 }}
+                            pagination={{ clickable: true }}
+                            className="rounded-box border border-gray-200 dark:border-gray-700 h-[400px]"
+                        >
+                            {dramaMovies.map(movie => (
+                                <SwiperSlide key={movie._id} className="h-[150px]">
+                                    <div className="flex flex-col items-center h-full">
+                                        <img src={movie.poster} alt={movie.title} className="h-full w-full object-cover rounded-md shadow-md" />
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                    <div className="flex flex-col">
+                        <p className="font-medium text-sm text-center mb-2">Action</p>
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            direction="vertical"
+                            spaceBetween={10}
+                            slidesPerView={1}
+                            autoplay={{ delay: 3000 }}
+                            pagination={{ clickable: true }}
+                            className="rounded-box border border-gray-200 dark:border-gray-700 h-[400px]"
+                        >
+                            {actionMovies.map(movie => (
+                                <SwiperSlide key={movie._id} className="h-[150px]">
+                                    <div className="flex flex-col items-center h-full">
+                                        <img src={movie.poster} alt={movie.title} className="h-full w-full object-cover rounded-md shadow-md" />
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                    <div className="flex flex-col">
+                        <p className="font-medium text-sm text-center mb-2">Comedy</p>
+                        <Swiper
+                            modules={[Navigation, Pagination, Autoplay]}
+                            direction="vertical"
+                            spaceBetween={10}
+                            slidesPerView={1}
+                            autoplay={{ delay: 3000 }}
+                            pagination={{ clickable: true }}
+                            className="rounded-box border border-gray-200 dark:border-gray-700 h-[400px]"
+                        >
+                            {comedyMovies.map(movie => (
+                                <SwiperSlide key={movie._id} className="h-[150px]">
+                                    <div className="flex flex-col items-center h-full">
+                                        <img src={movie.poster} alt={movie.title} className="h-full w-full object-cover rounded-md shadow-md"/>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
+                </div>
             </section>
             <footer>
                 <Footer />

@@ -4,7 +4,7 @@ import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from 'react-icons/fa';
 const Footer = () => {
     return (
         <footer className="bg-neutral text-neutral-content py-10 px-6 lg:px-24">
-            <div className="container mx-auto grid grid-cols-1 md:grid-cols-3">
+            <div className="mx-auto grid grid-cols-1 md:grid-cols-3">
                 <div className='lg:text-left'>
                     <h1 className="text-2xl font-bold">MOVIE ORCHID</h1>
                     <p className="mt-2">

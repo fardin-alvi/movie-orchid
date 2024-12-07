@@ -74,15 +74,7 @@ const Addmovie = () => {
                             icon: 'success',
                             confirmButtonText: 'Cool',
                         })
-                        setMovie({
-                            poster: '',
-                            title: '',
-                            genre: '',
-                            releaseYear: '',
-                            duration: '',
-                            rating: 0,
-                            summary: ''
-                        });
+                        e.target.reset()
                     }
 
                 })

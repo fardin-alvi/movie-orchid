@@ -13,8 +13,12 @@ const Navbar = () => {
         <NavLink to='/' className='border rounded-lg text-lg border-gray-300 p-2'>Home</NavLink>
         <NavLink to='/allmovie' className='border rounded-lg text-lg border-gray-300  p-2'>All Movie</NavLink>
         <NavLink to='/tvshow' className='border rounded-lg text-lg border-gray-300  p-2'>Tv Shows</NavLink>
-        <NavLink to='/login' className='md:hidden border rounded-lg text-lg border-gray-300  p-2'>LogIn</NavLink>
-        <NavLink to='/register' className='md:hidden border rounded-lg text-lg border-gray-300  p-2'>Register</NavLink>
+        {
+            !user && <>
+                <NavLink to='/login' className='md:hidden border rounded-lg text-lg border-gray-300  p-2'>LogIn</NavLink>
+                <NavLink to='/register' className='md:hidden border rounded-lg text-lg border-gray-300  p-2'>Register</NavLink>
+            </>
+        }
         {
             user && <>
                 <NavLink to='/addmovie' className='border rounded-lg text-lg border-gray-300  p-2'>Add Movie</NavLink>
@@ -65,7 +69,7 @@ const Navbar = () => {
 
     return (
         <div className={`navbar sticky top-0 z-50 w-full backdrop-blur items-center transition-all duration-300 
-    ${scroll ? 'bg-transparent backdrop-blur text-gray-700 shadow-lg' : 'bg-transparent text-gray-800'}`} >
+    ${scroll ? 'bg-transparent backdrop-blur dark:text-white text-gray-900 text-opacity-100 shadow-lg' : 'bg-transparent text-gray-800 dark:text-white'}`} >
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex="0" role="button" className="btn btn-ghost lg:hidden">
@@ -96,14 +100,14 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end md:flex items-center gap-x-3">
-                <button onClick={handletheme} className="rounded-full p-1 border border-gray-300" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}>{theme === 'dark' ? <BsSun /> : <BsMoon />}</button>
+                <button onClick={handletheme} className="rounded-full mr-5 md:mr-0 p-1 border border-gray-300" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}>{theme === 'dark' ? <BsSun /> : <BsMoon />}</button>
                 {
                     user ?
                         <div className='flex'>
-                            {user.photoURL ? (<img className="w-10 h-10 rounded-full object-cover" src={user.photoURL} alt="User" title={user.displayName} />) : ""
+                            {user.photoURL ? (<img className="w-10 h-10 hidden lg:block rounded-full object-cover" src={user.photoURL} alt="User" title={user.displayName} />) : ""
                             }
-                            <p className=" text-white text-sm opacity-0 hover:opacity-200"> {user?.displayName} </p>
-                            <Link to='/login' onClick={handlelogout} className="btn -ml-6">Log Out</Link>
+                            <p className=" text-white hidden lg:block text-sm opacity-0 hover:opacity-200"> {user?.displayName} </p>
+                            <Link to='/login' onClick={handlelogout} className="btn  -ml-6">Log Out</Link>
                         </div> : <div className='flex items-center ' >
                             <Link to='/login' className='hidden md:flex border rounded-lg text-lg border-gray-300 md:mr-2 p-2' >LogIn</Link>
                             <Link to='/register' className='hidden md:flex border rounded-lg text-lg border-gray-300 p-2' >Register</Link>
