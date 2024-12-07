@@ -1,11 +1,15 @@
 import React from 'react';
+import bannerone from '../Images/banner_3.jpg'
+import bannertwo from '../Images/banner7.jpg'
+import bannerthree from '../Images/banner10.jpg'
+import bannerfour from '../Images/banner8.jpg'
 
 const Banner = () => {
     return (
         <div class="carousel w-full h-[450px] object-cover">
             <div id="slide1" class="carousel-item relative w-full ">
                 <img
-                    src="/Images/banner_3.jpg"
+                    src={bannerone}
                     class="w-full object-cover rounded-md" />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black to-black opacity-20"></div>
                 <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -19,7 +23,7 @@ const Banner = () => {
             </div>
             <div id="slide2" class="carousel-item relative w-full">
                 <img
-                    src="/Images/banner7.jpg"
+                    src={bannertwo}
                     class="w-full object-cover rounded-md" />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black to-black opacity-50"></div>
                 <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -33,7 +37,7 @@ const Banner = () => {
             </div>
             <div id="slide3" class="carousel-item relative w-full">
                 <img
-                    src="/Images/banner10.jpg"
+                    src={bannerthree}
                     class="w-full object-cover rounded-md" />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black to-black opacity-50"></div>
                 <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
@@ -47,7 +51,7 @@ const Banner = () => {
             </div>
             <div id="slide4" class="carousel-item relative w-full">
                 <img
-                    src="/Images/banner8.jpg"
+                    src={bannerfour}
                     class="w-full object-cover rounded-md" />
                 <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-black to-black opacity-50"></div>
                 <div class="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">

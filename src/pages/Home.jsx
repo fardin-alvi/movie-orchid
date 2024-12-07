@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Navbar from '../component/Navbar';
 import Banner from '../component/Banner';
 import Footer from '../component/Footer';
 import { Link, useLoaderData } from 'react-router-dom';
 import Featuredmovie from '../component/Featuredmovie';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css'; // General Swiper styles
-import 'swiper/css/navigation'; // For navigation arrows
-import 'swiper/css/pagination'; // For pagination dots
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination'; 
 
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 

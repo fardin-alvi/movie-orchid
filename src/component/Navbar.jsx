@@ -26,9 +26,11 @@ const Navbar = () => {
             </>
         }
     </>;
-
     useEffect(() => {
-        if (window.matchMedia('(prefers-color-scheme:dark)').matches) {
+        const checktheme = localStorage.getItem('theme');
+        if (checktheme) {
+            setTheme(checktheme);
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
             setTheme('dark');
         } else {
             setTheme('light');
@@ -36,16 +38,16 @@ const Navbar = () => {
     }, []);
 
     useEffect(() => {
-        if (theme === 'dark') {
-            document.documentElement.classList.add('dark');
-        } else {
-            document.documentElement.classList.remove('dark');
+        if (theme) {
+            document.documentElement.classList.toggle('dark', theme === 'dark');
+            localStorage.setItem('theme', theme);
         }
     }, [theme]);
 
     const handletheme = () => {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
+
 
     const handlelogout = () => {
         logout()
