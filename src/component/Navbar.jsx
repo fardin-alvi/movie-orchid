@@ -10,19 +10,19 @@ const Navbar = () => {
     const [scroll, setScroll] = useState(false);
 
     const links = <>
-        <NavLink to='/' className='border rounded-lg text-lg border-gray-300 p-2'>Home</NavLink>
-        <NavLink to='/allmovie' className='border rounded-lg text-lg border-gray-300  p-2'>All Movie</NavLink>
-        <NavLink to='/tvshow' className='border rounded-lg text-lg border-gray-300  p-2'>Tv Shows</NavLink>
+        <NavLink to='/' className={({ isActive }) => `border rounded-lg text-lg border-gray-300 p-2 ${isActive ? 'bg-teal-400 text-white' : ''}`}>Home</NavLink>
+        <NavLink to='/allmovie' className={({ isActive }) => `border rounded-lg text-lg border-gray-300 p-2 ${isActive ? 'bg-teal-400 text-white' : ''}`}>All Movie</NavLink>
+        <NavLink to='/tvshow' className={({ isActive }) => `border rounded-lg text-lg border-gray-300 p-2 ${isActive ? 'bg-teal-400 text-white' : ''}`}>Tv Shows</NavLink>
         {
             !user && <>
-                <NavLink to='/login' className='md:hidden border rounded-lg text-lg border-gray-300  p-2'>LogIn</NavLink>
-                <NavLink to='/register' className='md:hidden border rounded-lg text-lg border-gray-300  p-2'>Register</NavLink>
+                <NavLink to='/login' className={({ isActive }) => `md:hidden border rounded-lg text-lg border-gray-300 p-2 ${isActive ? 'bg-teal-400 text-white' : ''}`}>LogIn</NavLink>
+                <NavLink to='/register' className={({ isActive }) => `md:hidden border rounded-lg text-lg border-gray-300 p-2 ${isActive ? 'bg-teal-400 text-white' : ''}`}>Register</NavLink>
             </>
         }
         {
             user && <>
-                <NavLink to='/addmovie' className='border rounded-lg text-lg border-gray-300  p-2'>Add Movie</NavLink>
-                <NavLink to='/myfav' className='border rounded-lg text-lg border-gray-300  p-2'>My Favorites</NavLink>
+                <NavLink to='/addmovie' className={({ isActive }) => `border rounded-lg text-lg border-gray-300 p-2 ${isActive ? 'bg-teal-400 text-white' : ''}`}>Add Movie</NavLink>
+                <NavLink to='/myfav' className={({ isActive }) => `border rounded-lg text-lg border-gray-300 p-2 ${isActive ? 'bg-teal-400 text-white' : ''}`}>My Favorites</NavLink>
             </>
         }
     </>;
