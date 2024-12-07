@@ -5,7 +5,7 @@ import Footer from '../component/Footer';
 import Swal from 'sweetalert2';
 import { FaStar } from 'react-icons/fa';
 import { Authcontext } from '../Provider/Authprovider';
-import { useLoaderData } from 'react-router-dom';
+import { useLoaderData, useNavigate } from 'react-router-dom';
 
 const Updatemovie = () => {
     const { user } = useContext(Authcontext)
@@ -13,6 +13,7 @@ const Updatemovie = () => {
     const { _id } = loadedmovie
     const [movie, setMovie] = useState({});
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate()
     const genres = ["Comedy", "Drama", "Horror", "Action", "Romance"];
     const years = [2024, 2023, 2022, 2021, 2020];
 
@@ -76,6 +77,9 @@ const Updatemovie = () => {
                             icon: 'success',
                             confirmButtonText: 'Cool'
                         })
+                        e.target.reset()
+                        navigate('/allmovie')
+
                     }
                 })
 

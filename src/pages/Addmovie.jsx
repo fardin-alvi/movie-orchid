@@ -4,11 +4,13 @@ import Footer from '../component/Footer';
 import Swal from 'sweetalert2';
 import { FaStar } from 'react-icons/fa';
 import { Authcontext } from '../Provider/Authprovider';
+import { useNavigate } from 'react-router-dom';
 
 const Addmovie = () => {
     const { user } = useContext(Authcontext)
     const [movie, setMovie] = useState({});
     const [errors, setErrors] = useState({});
+    const navigate = useNavigate()
     const genres = ["Comedy", "Drama", "Horror", "Action", "Romance", "Tv Show"];
     const years = [2024, 2023, 2022, 2021, 2020];
 
@@ -64,7 +66,6 @@ const Addmovie = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-
                     if (data.insertedId) {
                         Swal.fire({
                             title: 'Success!',
@@ -73,6 +74,8 @@ const Addmovie = () => {
                             confirmButtonText: 'Cool',
                         })
                         e.target.reset()
+                        navigate('/allmovie')
+
                     }
 
                 })
@@ -84,7 +87,7 @@ const Addmovie = () => {
         <div>
             <Navbar />
             <section>
-                <div className="flex justify-center items-center min-h-screen my-10">
+                <div className="flex justify-center items-center md:min-h-screen my-10">
                     <div className="card bg-white shadow-xl p-6 w-full max-w-2xl rounded-lg">
                         <h2 className="text-2xl font-bold mb-6 text-center">Add Movie</h2>
                         <form onSubmit={handleSubmit} className="space-y-4">

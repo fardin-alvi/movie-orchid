@@ -24,7 +24,7 @@ const Allmovie = () => {
                         <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"> <FaSearch size={20} /> </span>
                     </div>
                 </div>
-                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-8 '>
+                <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 my-8 w-11/12 mx-auto '>
                     {
                         filtermovies.length === 0 ?
                             <div className="col-span-3 text-center text-gray-500">No movies found.</div> : filtermovies.map(movie => ( <Featuredmovie key={movie._id} movie={movie} /> ))

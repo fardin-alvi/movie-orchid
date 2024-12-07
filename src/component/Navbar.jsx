@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Authcontext } from '../Provider/Authprovider';
-import { FaUserCircle } from 'react-icons/fa';
 import { BsSun, BsMoon } from 'react-icons/bs';
 
 const Navbar = () => {
     const { user, logout } = useContext(Authcontext);
     const [theme, setTheme] = useState(null);
     const [scroll, setScroll] = useState(false);
+    const location = useLocation()
+
+    const path = location.pathname === '/'
 
     const links = <>
         <NavLink to='/' className={({ isActive }) => `border rounded-lg text-lg border-gray-300 p-2 ${isActive ? 'bg-teal-400 text-white' : ''}`}>Home</NavLink>
@@ -102,7 +104,9 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end md:flex items-center gap-x-3">
-                <button onClick={handletheme} className="rounded-full mr-5 md:mr-0 p-1 border border-gray-300" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}>{theme === 'dark' ? <BsSun /> : <BsMoon />}</button>
+                {
+                    path && (<button onClick={handletheme} className="rounded-full mr-5 md:mr-0 p-1 border border-gray-300" aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}> {theme === 'dark' ? <BsSun /> : <BsMoon />} </button>)
+                }
                 {
                     user ?
                         <div className='flex'>

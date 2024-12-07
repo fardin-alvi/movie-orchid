@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Featuredmovie = ({ movie }) => {
     const { _id, poster, title, genre, duration, releaseYear, rating } = movie
     return (
-        <div className="card card-side bg-base-50 shadow-md space-x-6">
+        <div className="card card-side bg-base-50 shadow-md py-3 px-2 space-x-6">
             <figure>
                 <img src={poster} className='object-cover w-[260px] h-[260px]'  alt="Movie" /> 
             </figure>

@@ -75,9 +75,9 @@ const Moviedetails = () => {
         <div>
             <Navbar />
             <section className='my-10'>
-                <div className="card md:card-side bg-base-50 max-w-3xl mx-auto shadow-md space-x-6">
+                <div className="card md:card-side bg-base-50 max-w-3xl p-3 mx-auto shadow-md space-x-6">
                     <figure>
-                        <img src={poster} className='object-cover w-[320px] h-auto' alt="Movie" />
+                        <img src={poster} className='object-cover rounded-xl w-[350px] h-auto' alt="Movie" />
                     </figure>
                     <div className="text-left mt-5 my-auto">
                         <h2 className='text-lg font-bold'>{title}</h2>
@@ -89,12 +89,12 @@ const Moviedetails = () => {
                             <p className='text-sm'>Rating: {rating}</p>
                         </div>
                         <p className='text-gray-500'>{summary} </p>
-                        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-x-2">
-                            <button onClick={() => handledelete(_id)} className="flex flex-col items-center px-2 md:py-2 text-sm bg-red-500 text-white rounded-md"
+                        <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-x-2 gap-y-2 md:gap-y-0">
+                            <button onClick={() => handledelete(_id)} className="flex md:flex-col w-32 py-2 items-center px-2 md:py-2 text-sm bg-red-500 text-white rounded-md"
                             > <AiFillDelete className="mr-2" />Delete</button>
-                            <button onClick={handlefavorite} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
+                            <button onClick={handlefavorite} className="flex md:flex-col items-center w-36 py-2 px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
                             > <AiOutlineHeart className="mr-2" />Add to Favorite</button>
-                            <Link to={`/updatemovie/${_id}`} className="flex flex-col items-center px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
+                            <Link to={`/updatemovie/${_id}`} className="flex md:flex-col items-center w-32 py-2 px-2 md:py-2 bg-teal-400 text-sm text-white rounded-md"
                             > <FaEdit className="mr-2" />Update</Link>
                         </div>
                     </div>

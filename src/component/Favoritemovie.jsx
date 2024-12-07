@@ -42,7 +42,7 @@ const Favoritemovie = ({ fav }) => {
 
 
     return (
-        <div className="card card-side bg-base-50 shadow-md space-x-6">
+        <div className="card card-side bg-base-50 shadow-md px-2 py-3 space-x-6">
             <figure>
                 <img src={poster} className='object-cover w-[260px] h-[260px]' alt="Movie" />
             </figure>
@@ -56,7 +56,7 @@ const Favoritemovie = ({ fav }) => {
                     <p className='text-sm'>Rating: {rating}</p>
                 </div>
                 <div className='mt-5'>
-                    <button onClick={() => handledelete(_id)} className="flex items-center text-sm px-3 md:py-1 bg-red-500 text-white rounded-md"
+                    <button onClick={() => handledelete(_id)} className="flex items-center text-sm px-3 py-2 md:py-1 bg-red-500 text-white rounded-md"
                     >Delete Favorite</button>
                 </div>
             </div>

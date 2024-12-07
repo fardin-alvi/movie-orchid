@@ -18,7 +18,7 @@ const Myfavorites = () => {
     return (
         <div>
             <Navbar />
-            <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 my-8 '>
+            <section className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-2 w-11/12 mx-auto my-8 '>
                 {
                     filterdata.map(fav => <Favoritemovie key={fav._id} fav={fav} />)
                 }
