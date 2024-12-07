@@ -1,8 +1,16 @@
-# React + Vite
+# Movie Orchid
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live Site URL : https://movie-portal-85fbe.web.app
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **User-Friendly Interface**: Enjoy a clean and intuitive design, easily add Movie .
+- **Comprehensive Movie Listings**: Browse through a vast collection of movies.
+- **Search Functionality**: Quickly find your favorite movies and See details.
+- **Responsive Design**: Access the site effortlessly on any device, from desktops to smartphones.
+- **Favorites Management**: Save your favorite movies and revisit them anytime in your personalized list.
+- **Real-Time Data Updates**: Get the latest movie details, ratings, and reviews updated instantly.
+
+---
+
+

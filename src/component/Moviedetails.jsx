@@ -33,7 +33,7 @@ const Moviedetails = () => {
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your Movie has been deleted.",
                                 icon: "success"
                             });
                             navigate('/allmovie')

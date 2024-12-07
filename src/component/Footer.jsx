@@ -43,10 +43,8 @@ const Footer = () => {
                         <li>Australia</li>
                         <li className='mt-5'>
                             Email: <span>support@movieorchid.com</span>
-                            {/* <a href="mailto:support@movieorchid.com" className="link link-hover">support@movieorchid.com</a> */}
                             <br />
                             Phone: <span>+1 (234) 567-890</span>
-                            {/* <a href="tel:+1234567890" className="link link-hover">+1 (234) 567-890</a> */}
                         </li>
                     </ul>
                 </div>
