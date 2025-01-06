@@ -60,7 +60,7 @@ const Updatemovie = () => {
         if (validateForm()) {
             const usermovie = { ...movie, email: user.email };
 
-            fetch(`https://server-theta-rust.vercel.app/movies/${_id}`, {
+            fetch(`http://localhost:4000/movies/${_id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

@@ -18,59 +18,67 @@ import Myfavorites from './pages/Myfavorites.jsx';
 import Errorpage from './component/Errorpage.jsx';
 import Updatemovie from './component/Updatemovie.jsx';
 import Tvshows from './pages/Tvshows.jsx';
+import MainLayout from './Layout/MainLayout.jsx';
 
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
+    path: '/',
+    element: <MainLayout />,
     errorElement: <Errorpage />,
-    loader: () => fetch('https://server-theta-rust.vercel.app/movies')
-  },
-  {
-    path: 'addmovie',
-    element: <Privateroute>
-      <Addmovie />
-    </Privateroute>
-  },
-  {
-    path: 'allmovie',
-    element: <Allmovie />,
-    loader: () => fetch('https://server-theta-rust.vercel.app/movies')
-  },
-  {
-    path: 'tvshow',
-    element: <Tvshows />,
-    loader: () => fetch('https://server-theta-rust.vercel.app/movies')
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+        loader: () => fetch('http://localhost:4000/movies'),
+      },
+      {
+        path: 'addmovie',
+        element: <Privateroute>
+          <Addmovie />
+        </Privateroute>
+      },
+      {
+        path: 'allmovie',
+        element: <Allmovie />,
+        loader: () => fetch('http://localhost:4000/movies')
+      },
+      {
+        path: 'tvshow',
+        element: <Tvshows />,
+        loader: () => fetch('http://localhost:4000/movies')
 
-  },
-  {
-    path: '/movies/:id',
-    element: <Privateroute>
-      <Moviedetails />
-    </Privateroute>,
-    loader: ({ params }) => fetch(`https://server-theta-rust.vercel.app/movies/${params.id}`)
-  },
-  {
-    path: '/updatemovie/:id',
-    element: <Privateroute>
-      <Updatemovie />
-    </Privateroute>,
-    loader: ({ params }) => fetch(`https://server-theta-rust.vercel.app/movies/${params.id}`)
-  },
-  {
-    path: '/myfav',
-    element: <Privateroute>
-      <Myfavorites />
-    </Privateroute>,
-    loader: () => fetch('https://server-theta-rust.vercel.app/favoritemovie')
-  },
-  {
-    path: 'login',
-    element: <Login />
-  },
-  {
-    path: 'register',
-    element: <Register />
+      },
+      {
+        path: '/movies/:id',
+        element: <Privateroute>
+          <Moviedetails />
+        </Privateroute>,
+        loader: ({ params }) => fetch(`http://localhost:4000/movies/${params.id}`)
+      },
+      {
+        path: '/updatemovie/:id',
+        element: <Privateroute>
+          <Updatemovie />
+        </Privateroute>,
+        loader: ({ params }) => fetch(`http://localhost:4000/movies/${params.id}`)
+      },
+      {
+        path: '/myfav',
+        element: <Privateroute>
+          <Myfavorites />
+        </Privateroute>,
+        loader: () => fetch('http://localhost:4000/favoritemovie')
+      },
+      {
+        path: 'login',
+        element: <Login />
+      },
+      {
+        path: 'register',
+        element: <Register />
+      }
+      
+    ]
   }
 ]);
 

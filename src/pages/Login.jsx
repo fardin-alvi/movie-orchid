@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../Provider/Authprovider';
 import { FaEnvelope, FaLock } from "react-icons/fa";
 import { useForm } from 'react-hook-form';
+import Lottie from "lottie-react";
+import loginLotti from '../Images/login/login.json'
 
 const Login = () => {
     const { login, setUser, singinWithGoogle } = useContext(Authcontext)
@@ -34,11 +36,7 @@ const Login = () => {
             .catch(err => seterror(err.message))
     }
     return (
-        
         <div>
-            <nav>
-                <Navbar/>
-            </nav>
             <div className="flex justify-center items-center my-5 md:my-10">
                 <div className="w-full max-w-sm bg-white p-8 rounded-lg shadow-lg">
                     <h2 className="text-2xl font-bold mb-6 text-center">Log In</h2>
@@ -71,11 +69,10 @@ const Login = () => {
                         Haven't any Account? <Link to='/register' className='text-green-500'>Register</Link>
                     </p>
                 </div>
+                <div>
+                    <Lottie animationData={loginLotti} loop={true} />
+                </div>
             </div>
-            <footer>
-                <Footer/>
-            </footer>
-            
         </div>
     );
 };

@@ -1,12 +1,13 @@
 import React from 'react';
 import { FaFacebook, FaInstagram, FaYoutube, FaTwitter } from 'react-icons/fa';
+import logo from '../../public/logo.png'
 
 const Footer = () => {
     return (
-        <footer className="bg-neutral text-neutral-content py-10 px-6 lg:px-24">
+        <footer className="bg-gradient-to-b from-teal-500 to-indigo-500 text-black py-10 px-6 lg:px-24">
             <div className="mx-auto grid grid-cols-1 md:grid-cols-3">
                 <div className='lg:text-left'>
-                    <h1 className="text-2xl font-bold">MOVIE ORCHID</h1>
+                   <img className='w-24' src={logo} alt="" />
                     <p className="mt-2">
                         © 2024 MOVIE ORchid. All rights reserved.
                     </p>

@@ -18,7 +18,7 @@ const Favoritemovie = ({ fav }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://server-theta-rust.vercel.app/favoritemovie/${_id}`, {
+                fetch(`http://localhost:4000/favoritemovie/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -42,11 +42,11 @@ const Favoritemovie = ({ fav }) => {
 
 
     return (
-        <div className="card card-side bg-base-50 shadow-md px-2 py-3 space-x-6">
+        <div className=" flex flex-col rounded-md shadow-md bg-white overflow-hidden">
             <figure>
-                <img src={poster} className='object-cover w-[260px] h-[260px]' alt="Movie" />
+                <img src={poster} className='object-cover w-full h-[260px]' alt="Movie" />
             </figure>
-            <div className="text-left my-auto">
+            <div className="text-left my-auto items-center py-3 px-2">
                 <h2 className='text-lg font-bold'>{title}</h2>
                 <p className='font-medium'>{genre}</p>
                 <hr className='mt-3' />

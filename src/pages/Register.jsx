@@ -4,6 +4,8 @@ import Navbar from '../component/Navbar';
 import Footer from '../component/Footer';
 import { Link, useNavigate } from 'react-router-dom';
 import { Authcontext } from '../Provider/Authprovider';
+import Lottie from "lottie-react";
+import loginLotti from '../Images/login/login.json'
 
 const Register = () => {
     const [error, seterror] = useState('')
@@ -47,10 +49,7 @@ const Register = () => {
     }
     
     return (
-        <div>
-            <nav>
-                <Navbar />
-            </nav>
+        <div className='bg-base-200'>
             <div className="flex justify-center items-center my-5 md:my-10">
                 <div className="w-full max-w-sm bg-white p-8 rounded-lg shadow-lg">
                     <h2 className="text-2xl font-bold mb-6 text-center">Sign up</h2>
@@ -108,11 +107,10 @@ const Register = () => {
                         <p> Already have an Account <Link to='/login' className='text-green-500' >Log In</Link></p>
                     </p>
                 </div>
+                <div>
+                    <Lottie animationData={loginLotti} loop={true} />
+                </div>
             </div>
-            <footer>
-                <Footer />
-            </footer>
-
         </div>
     );
 };
