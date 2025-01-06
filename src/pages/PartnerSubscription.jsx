@@ -29,7 +29,7 @@ const PartnerSubscription = () => {
             return;
         }
         try {
-            const response = await fetch("http://localhost:4000/subscribe", {
+            const response = await fetch("https://server-theta-rust.vercel.app/subscribe", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

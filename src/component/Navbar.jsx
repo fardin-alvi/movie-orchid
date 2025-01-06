@@ -10,6 +10,8 @@ const Navbar = () => {
     const location = useLocation();
     const navigate = useNavigate();
 
+    const path = location.pathname === '/'
+
     const links = (
         <>
             <NavLink
@@ -136,13 +138,15 @@ const Navbar = () => {
                 </div>
                 <div className="hidden md:flex items-center space-x-4">{links}</div>
                 <div className="flex items-center gap-3">
-                    <button
-                        onClick={handletheme}
-                        className="p-2 rounded-full bg-gray-200 text-teal-500 dark:bg-gray-700 dark:text-yellow-300"
-                        aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-                    >
-                        {theme === 'dark' ? <BsSun /> : <BsMoon />}
-                    </button>
+                    {
+                        path && <button
+                            onClick={handletheme}
+                            className="p-2 rounded-full bg-gray-200 text-teal-500 dark:bg-gray-700 dark:text-yellow-300"
+                            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+                        >
+                            {theme === 'dark' ? <BsSun /> : <BsMoon />}
+                        </button>
+                    }
                     {user ? (
                         <div className="flex items-center space-x-2">
                             {user.photoURL && (

@@ -26,7 +26,7 @@ const Myfavorites = () => {
             confirmButtonText: "Yes, delete it!",
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/favoritemovie/${id}`, {
+                fetch(`https://server-theta-rust.vercel.app/favoritemovie/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

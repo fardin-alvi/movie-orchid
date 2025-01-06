@@ -29,7 +29,7 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch('http://localhost:4000/movies'),
+        loader: () => fetch('https://server-theta-rust.vercel.app/movies'),
       },
       {
         path: 'addmovie',
@@ -40,34 +40,30 @@ const router = createBrowserRouter([
       {
         path: 'allmovie',
         element: <Allmovie />,
-        loader: () => fetch('http://localhost:4000/movies')
+        loader: () => fetch('https://server-theta-rust.vercel.app/movies')
       },
       {
         path: 'tvshow',
         element: <Tvshows />,
-        loader: () => fetch('http://localhost:4000/movies')
+        loader: () => fetch('https://server-theta-rust.vercel.app/movies')
 
       },
       {
         path: '/movies/:id',
-        element: <Privateroute>
-          <Moviedetails />
-        </Privateroute>,
-        loader: ({ params }) => fetch(`http://localhost:4000/movies/${params.id}`)
+        element:<Moviedetails />,
+        loader: ({ params }) => fetch(`https://server-theta-rust.vercel.app/movies/${params.id}`)
       },
       {
         path: '/updatemovie/:id',
-        element: <Privateroute>
-          <Updatemovie />
-        </Privateroute>,
-        loader: ({ params }) => fetch(`http://localhost:4000/movies/${params.id}`)
+        element:<Updatemovie />,
+        loader: ({ params }) => fetch(`https://server-theta-rust.vercel.app/movies/${params.id}`)
       },
       {
         path: '/myfav',
         element: <Privateroute>
           <Myfavorites />
         </Privateroute>,
-        loader: () => fetch('http://localhost:4000/favoritemovie')
+        loader: () => fetch('https://server-theta-rust.vercel.app/favoritemovie')
       },
       {
         path: 'login',
@@ -77,7 +73,7 @@ const router = createBrowserRouter([
         path: 'register',
         element: <Register />
       }
-      
+
     ]
   }
 ]);

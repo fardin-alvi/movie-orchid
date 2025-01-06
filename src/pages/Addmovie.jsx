@@ -62,7 +62,7 @@ const Addmovie = () => {
         if (validateForm()) {
             const usermovie = { ...movie, email: user.email };
 
-            fetch('http://localhost:4000/movies', {
+            fetch('https://server-theta-rust.vercel.app/movies', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

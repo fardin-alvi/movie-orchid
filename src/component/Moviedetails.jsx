@@ -25,7 +25,7 @@ const Moviedetails = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:4000/movies/${_id}`, {
+                fetch(`https://server-theta-rust.vercel.app/movies/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())
@@ -47,7 +47,7 @@ const Moviedetails = () => {
 
     const handlefavorite = () => {
         const favoritemovie = { ...movies, email: user.email };
-        fetch('http://localhost:4000/favoritemovie', {
+        fetch('https://server-theta-rust.vercel.app/favoritemovie', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
