@@ -33,7 +33,7 @@ Movie Orchid is an interactive movie portal where users can explore and manage m
 - sweetalert2: version-11.14.5
 - react-simple-star-rating: version-5.1.7
 
-# How to Run
+## How to Run
 
 - clone the project
 - Install required dependencies
